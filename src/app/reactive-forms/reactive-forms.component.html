@@ -1,0 +1,26 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <input type="email" formControlName="email" placeholder="Email">
+    <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+        <small *ngIf="loginForm.get('email')?.errors?.['required']">
+            Email is required
+        </small>"
+        <small *ngIf="loginForm.get('email')?.errors?.['pattern']">
+            Invalid pattern
+        </small>
+    </div>
+    <input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password">
+    <button type="button" (click)="togglePassword()">
+        {{ showPassword ? 'Hide' : 'Show'}}
+    </button>
+    <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+        <small *ngIf="loginForm.get('password')?.errors?.['required']">
+            Password is required
+        </small>
+        <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+            Mininum length is 6
+        </small>
+    </div>
+    <button type="submit" [disabled]="loginForm.invalid">
+        Submit
+    </button>
+</form>
