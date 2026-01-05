@@ -7,7 +7,14 @@ import { HighlightDirective } from './highlight.directive';
 import { CapitalizePipe } from './capitalize.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
-import { SignalsComponent } from './signals/signals.component';
+import { SignalComponent } from './signal/signal.component';
+import { ComponentbComponent } from './signal/componentb.component';
+import { BehaviorSubComponent } from './behavior-sub/behavior-sub.component';
+import { BehaviorbComponent } from './behavior-sub/behaviorb.component';
+import { StoreModule } from '@ngrx/store';
+import { userReducer } from './create-reducer';
+import { CompAComponent } from './comp-a.component';
+import { CompBComponent } from './comp-b.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +22,19 @@ import { SignalsComponent } from './signals/signals.component';
     HighlightDirective,
     CapitalizePipe,
     ReactiveFormsComponent,
-    SignalsComponent
+    SignalComponent,
+    ComponentbComponent,
+    BehaviorSubComponent,
+    BehaviorbComponent,
+    CompAComponent,
+    CompBComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({user: userReducer}, {})
   ],
   providers: [],
   bootstrap: [AppComponent]
